@@ -7,7 +7,7 @@ int main() {
   ofstream MyFile("filename.txt");
 
   // Write to the file
-  MyFile << "allo2!";
+  MyFile << "allo3!";
 
   // Close the file
   MyFile.close();
