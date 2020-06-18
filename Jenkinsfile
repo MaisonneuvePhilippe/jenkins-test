@@ -5,9 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Trying to build the other pipeline'
-                build job: 'answer', parameters: [
-                string(name: 'MESSAGE', value: "Hello from the other pipeline")
-                ]
+                build job: 'answer'
 
             }
         }
