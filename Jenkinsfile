@@ -5,8 +5,8 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Trying to build t he other pipeline'
-                build job: 'pipe',
                 FILE = readFile("./A")
+                build job: 'pipe',
                 parameters: [
                     string(name: 'MESSAGE', value: FILE)
                 ]
