@@ -8,7 +8,7 @@ pipeline {
                 
                 build job: 'pipe',
                 parameters: [
-                    string(name: 'MESSAGE', value: readFile(file: "./A")
+                    string(name: 'MESSAGE', value: readFile(file: "./A"))
                 ]
 
             }
