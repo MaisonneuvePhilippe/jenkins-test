@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Trying to build the other pipeline'
-                build job: 'answer'
+                build job: 'test1'
 
             }
         }
