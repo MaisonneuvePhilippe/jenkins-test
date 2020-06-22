@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Trying to build t he other pipeline'
+                echo 'Trying to build the other pipeline'
                 
                 build job: 'pipe',
                 parameters: [
