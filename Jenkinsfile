@@ -14,7 +14,7 @@ pipeline {
                     def workers_dir =  "./folder"
                     def  FILES_LIST = sh (script: "ls   '${workers_dir}'", returnStdout: true).trim()
 
-                    for elem: FILES_LIST("\\r?\\n"){
+                    for elem: FILES_LIST.split("\\r?\\n"){
                         elem = "${elem}:${readFile(file: elem)}"
                         echo elem
                     }
