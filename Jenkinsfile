@@ -14,7 +14,7 @@ pipeline {
                     for (String elem: FILES_LIST.split("\\r?\\n")){
                         path = "./folder/"+elem
                         elem = "${elem}:${readFile(file: path)}"
-                        full = full + elem + "|"
+                        full = full + elem + "/"
                         echo elem
                     }
                     //PARSING
