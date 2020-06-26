@@ -21,7 +21,7 @@ pipeline {
                     echo full
                     build job: 'pipe',
                     parameters: [
-                        string(name: 'MESSAGE', value: readFile(file: full))
+                        string(name: 'MESSAGE', value:full)
                     ]
                 }
             }
