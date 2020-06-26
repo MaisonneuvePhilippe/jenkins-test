@@ -6,10 +6,7 @@ pipeline {
             steps {
                 echo 'Trying to build the other pipeline'
                 
-                // build job: 'pipe',
-                // parameters: [
-                //     string(name: 'MESSAGE', value: readFile(file: "./A"))
-                // ]
+                
                 script{
                     def workers_dir =  "./folder"
                     def  FILES_LIST = sh (script: "ls   '${workers_dir}'", returnStdout: true).trim()
@@ -22,6 +19,10 @@ pipeline {
                     }
                     //PARSING
                     echo full
+                    build job: 'pipe',
+                    parameters: [
+                        string(name: 'MESSAGE', value: readFile(file: full))
+                    ]
                 }
             }
         }
