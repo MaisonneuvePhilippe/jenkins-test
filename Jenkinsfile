@@ -13,16 +13,15 @@ pipeline {
                 script{
                     def workers_dir =  "./folder"
                     def  FILES_LIST = sh (script: "ls   '${workers_dir}'", returnStdout: true).trim()
-
+                    def full = ""
                     for (String elem: FILES_LIST.split("\\r?\\n")){
                         path = "./folder/"+elem
                         elem = "${elem}:${readFile(file: path)}"
+                        full = full + elem + "|"
                         echo elem
                     }
                     //PARSING
-                    for(String ele : FILES_LIST.split("\\r?\\n")){ 
-                    println ">>>${ele}<<<"     
-                    }
+                    echo full
                 }
             }
         }
