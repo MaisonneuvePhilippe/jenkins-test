@@ -26,6 +26,27 @@ pipeline {
                 }
             }
         }
+        stage("Commit") {
+            steps {
+                sh('''
+                    git checkout -B $TARGET_BRANCH
+                    git config user.name 'philippMasonneuve'
+                    git config user.email 'philippe.maisonneuve@polymtl.ca'
+                    git add . && git commit -am "[Jenkins CI] Add build file"
+                ''')
+            }
+        }
+        stage("Push") {
+            environment { 
+                    GIT_AUTH = credentials('support-team-up') 
+                }
+                steps {
+                    sh('''
+                        git config --local credential.helper "!f() { echo username=\\$GIT_AUTH_USR; echo password=\\$GIT_AUTH_PSW; }; f"
+                        git push origin HEAD:$TARGET_BRANCH
+                    ''')
+                }
+            }
         stage('Test') {
             steps {
                 echo 'Testing..'
