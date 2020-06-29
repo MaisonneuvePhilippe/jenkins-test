@@ -29,7 +29,7 @@ pipeline {
         stage("Commit") {
             steps {
                 sh('''
-                    git checkout -B $TARGET_BRANCH
+                    git checkout -B master
                     git config user.name 'philippMasonneuve'
                     git config user.email 'philippe.maisonneuve@polymtl.ca'
                     git add . && git commit -am "[Jenkins CI] Add build file"
