@@ -17,12 +17,12 @@ pipeline {
                         full = full + elem + "/"
                         echo elem
                     }
-                    //PARSING
-                    echo full
-                    build job: 'pipe',
-                    parameters: [
-                        string(name: 'MESSAGE', value:full)
-                    ]
+                    // //PARSING
+                    // echo full
+                    // build job: 'pipe',
+                    // parameters: [
+                    //     string(name: 'MESSAGE', value:full)
+                    // ]
                     writeFile file: ".s/usefulfile.txt", text: "This file is useful, need to archive it."
                 }
             }
@@ -38,15 +38,18 @@ pipeline {
             }
         }
         stage("Push") {
+            echo "act 1"
             environment { 
                     GIT_AUTH = credentials('support-team-up') 
                 }
+            echo "act 2"
                 steps {
                     sh('''
                         git config --local credential.helper "!f() { echo username=\\$GIT_AUTH_USR; echo password=\\$GIT_AUTH_PSW; }; f"
                         git push origin HEAD:master
                     ''')
                 }
+            echo "act 3"
             }
         stage('Test') {
             steps {
