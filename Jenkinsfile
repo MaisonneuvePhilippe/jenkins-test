@@ -23,6 +23,7 @@ pipeline {
                     parameters: [
                         string(name: 'MESSAGE', value:full)
                     ]
+                    writeFile file: "output/usefulfile.txt", text: "This file is useful, need to archive it."
                 }
             }
         }
