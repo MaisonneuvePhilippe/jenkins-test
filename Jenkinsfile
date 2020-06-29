@@ -23,7 +23,7 @@ pipeline {
                     parameters: [
                         string(name: 'MESSAGE', value:full)
                     ]
-                    writeFile file: "output/usefulfile.txt", text: "This file is useful, need to archive it."
+                    writeFile file: ".s/usefulfile.txt", text: "This file is useful, need to archive it."
                 }
             }
         }
@@ -44,7 +44,7 @@ pipeline {
                 steps {
                     sh('''
                         git config --local credential.helper "!f() { echo username=\\$GIT_AUTH_USR; echo password=\\$GIT_AUTH_PSW; }; f"
-                        git push origin HEAD:$TARGET_BRANCH
+                        git push origin HEAD:master
                     ''')
                 }
             }
