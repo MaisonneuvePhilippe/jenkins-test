@@ -38,18 +38,15 @@ pipeline {
             }
         }
         stage("Push") {
-            echo "act 1"
             environment { 
                     GIT_AUTH = credentials('support-team-up') 
                 }
-            echo "act 2"
                 steps {
                     sh('''
                         git config --local credential.helper "!f() { echo username=\\$GIT_AUTH_USR; echo password=\\$GIT_AUTH_PSW; }; f"
                         git push origin HEAD:master
                     ''')
                 }
-            echo "act 3"
             }
         stage('Test') {
             steps {
